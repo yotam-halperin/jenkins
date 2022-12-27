@@ -1,0 +1,26 @@
+CI Lab setup and Freestyle Cowsay
+---------------------------------
+
+Tip: Read the instructions twice and then draw your topology before you start to work on a project!
+
+1. Lab setup:
+   - Create a Jenkins image with docker client installed in it (this should be very simple).
+   - Create your CI lab with `docker-compose`, with a Jenkins service and a GitLab service (you will administer your own instance of a "remote" git server). Make sure to setup volumes to store you Jenkins home directory, and any directories GitLab requires.
+   - Expose Jenkins and GitLab ports to your machine.
+   - Login to GitLab with its `root` user, and use it to setup two additional users (and their appropriate permissions):
+     a. `<yourname>` - Which will represent (for the exercise) a standard "developer" user, or the development team.
+     b. `jenkins` - To be used by the Jenkins server, in order to have access to GitLab.
+   Tip: This lab will serve you in the upcoming weeks for multiple exercises (and the exam), so don't name it "cowsay"!
+2. Cowsay - using a Freestyle job:
+   - Create a repository and push Cowsay source code to GitLab.
+   - Create a job that builds and tests cowsay:
+   - Add build stage (`docker build`).
+   - Add test stage (`docker run` and `curl`).
+     Tip: Be mindful of the Docker networks in use!
+
+
+To hand-in
+----------
+1. Your lab's `docker-compose.yaml`.
+2. Your Jenkins' `Dockerfile`.
+3. Your full topology drawing (including Cowsay's test container).
